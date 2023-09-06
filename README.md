@@ -6,28 +6,22 @@ dotnet clean
 dotnet nuget locals all --clear
 dotnet restore
 dotnet build --no-restore
-PROJECT_FILE="MyDotNetAPI.csproj"
-dotnet watch run --project=$PROJECT_FILE --environment=UAT
-# or
-dotnet watch run --project=$PROJECT_FILE --environment=Development
+#ENVIRONMENT_NAME="Development";
+ENVIRONMENT_NAME="UAT";
+dotnet watch run --environment=$ENVIRONMENT_NAME
 ```
 
 ### Testing a Compiled App
-Testing out the production packaged app
+Testing out the DLL / compiled app
 ```shell
 dotnet clean
 dotnet nuget locals all --clear
 dotnet restore
 dotnet build --no-restore
 dotnet publish
-COMPILED_PACKAGE="bin/Debug/net7.0/MyDotNetAPI.dll"
-dotnet $COMPILED_PACKAGE --no-build --environment=UAT;
-```
-
-Testing out the UAT packaged app
-```shell
-export ASPNETCORE_ENVIRONMENT=UAT;
-# same commands from above
+DLL_PATH="bin/Debug/net7.0/MyDotNetAPI.dll"
+ENVIRONMENT_NAME="UAT";
+dotnet $DLL_PATH -- --no-build --environment=$ENVIRONMENT_NAME;
 ```
 ---
 
