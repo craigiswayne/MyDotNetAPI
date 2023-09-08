@@ -19,11 +19,12 @@ public class DebugController : ControllerBase
     [HttpGet]
     [Produces(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public ActionResult<object> Get()
     {
         var env = new {
             hostEnvironmentName = _hostEnvironment.EnvironmentName,
+            isProduction = _hostEnvironment.IsProduction(),
+            isDevelopment = _hostEnvironment.IsDevelopment(),
             aspNetCoreEnvironment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"),
             dbType = _configuration.GetRequiredSection("Db").GetValue<string>("Type"),
             defaultConnection = _configuration.GetConnectionString("DefaultConnection")
