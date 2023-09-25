@@ -154,6 +154,57 @@ dotnet ef database update --context MyDbContextSqLite -v
 |------------|--------------------------------------------------------------------------------------------|
 | Migrations | Basically DB as Code. Allows you to use your code as the source of truth for the DB Schema |
 
+
+---
+
+### Adding Unit Tests
+
+```shell
+cd ~/code
+mkdir -p unit-testing-using-nunit
+git init
+cd unit-testing-using-nunit
+dotnet new sln
+mkdir -p PrimeService 
+cd PrimeService
+dotnet new classlib
+mv Class1.cs PrimeService.cs
+cd ../
+dotnet sln add PrimeService/PrimeService.csproj
+mkdir -p PrimeService.Tests
+cd PrimeService.Tests
+dotnet new nunit
+dotnet add reference ../PrimeService/PrimeService.csproj
+cd ../
+mv PrimeService.Tests/UnitTest1.cs PrimeService.Tests/PrimeService_IsPrimeShould.cs
+echo "using NUnit.Framework;
+using Prime.Services;
+
+namespace Prime.UnitTests.Services;
+
+[TestFixture]
+public class PrimeService_IsPrimeShould
+{
+    private PrimeService _primeService;
+
+    [SetUp]
+    public void SetUp()
+    {
+        _primeService = new PrimeService();
+    }
+
+    [Test]
+    public void IsPrime_InputIs1_ReturnFalse()
+    {
+        var result = _primeService.IsPrime(1);
+
+        Assert.That(false, Is.True, "1 should not be prime");
+    }
+}" > PrimeService.Tests/PrimeService_IsPrimeShould.cs
+dotnet sln add PrimeService.Tests/PrimeService.Tests.csproj
+dotnet test
+```
+
 ----
 
 ### References:
