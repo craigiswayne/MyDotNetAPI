@@ -202,7 +202,7 @@ public class PrimeService_IsPrimeShould
     }
 }" > PrimeService.Tests/PrimeService_IsPrimeShould.cs
 dotnet sln add PrimeService.Tests/PrimeService.Tests.csproj
-dotnet test
+dotnet test --logger html
 ```
 
 ----
@@ -219,3 +219,4 @@ dotnet test
 * [Seed DB](https://www.youtube.com/watch?v=z-Hll4Xddjs)
 * [Sqlite & Entity Framework Core](https://www.youtube.com/watch?v=z-Hll4Xddjs)
 * [Registering Services](https://www.youtube.com/watch?v=sSq3GtriFuM)
+* [API Unit Tests](https://www.youtube.com/watch?v=RgoytbbYbr8)
