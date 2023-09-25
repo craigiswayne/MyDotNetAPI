@@ -220,3 +220,4 @@ dotnet test --logger html
 * [Sqlite & Entity Framework Core](https://www.youtube.com/watch?v=z-Hll4Xddjs)
 * [Registering Services](https://www.youtube.com/watch?v=sSq3GtriFuM)
 * [API Unit Tests](https://www.youtube.com/watch?v=RgoytbbYbr8)
+* [GitHub Actions for DotNet](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net)
