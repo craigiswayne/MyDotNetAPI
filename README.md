@@ -8,7 +8,7 @@ dotnet restore
 dotnet build --no-restore
 #ENVIRONMENT_NAME="Development";
 ENVIRONMENT_NAME="UAT";
-dotnet watch run --environment=$ENVIRONMENT_NAME
+dotnet watch run --environment=$ENVIRONMENT_NAME --project=MyDotNetAPI/MyDotNetAPI.csproj
 ```
 
 ### Testing a Compiled App
@@ -28,7 +28,7 @@ dotnet $DLL_PATH -- --no-build --environment=$ENVIRONMENT_NAME;
 ### Environment
 
 * Using `launchSettings.json`
-    * Navigate to `Properties/launchSettings.json`
+    * Navigate to `MyDotNetAPI/Properties/launchSettings.json`
     * There will be launch profiles for each environment
         * DEV
         * UAT
